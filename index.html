@@ -1,14 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Game</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:))))))))))</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <script src="https://unpkg.com/kaboom@2000.1.8/dist/kaboom.js"></script>
-	<script src="game.js"></script>
+    <div class="windows">
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+        <div class="window"></div>
+    </div>
+    <div id="e3">
+        M tính chết nóng à :)
+    </div>
+    <div class="dh">
+        <img class="air" src="a.png" />
+        
+    </div>
+    <div id="w12"></div>
+    <div id="e">
+        <div class="toggleBox">
+            <div class="toggle">
+                <input type="checkbox" class="on" id="input">
+                <label for="" class="onbtn">On</label>
+                <label for="" class="ofbtn">Off</label>
+            </div>
+        </div>
+        <div id="ww">
+            <div> <img id="r1" class="a2" src="down.png" /> </div>
+            <div> <img id="r2" class="a2" src="up.png" /> </div>
+        </div>
+    </div>
+    <!-- Code Snow -->
+    <style type="text/css">
+        .snow-container {
+            position: fixed;
+            width: 100%;
+            max-width: 100%;
+            z-index: 99999;
+            pointer-events: none;
+            overflow: hidden;
+            top: 0;
+            height: 100%;
+        }
+
+        .snow {
+            display: block;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            -webkit-animation: snow linear infinite;
+            animation: snow linear infinite;
+        }
+
+        .snow.foreground {
+            background-image: url("https://itexpress.vn/API/files/img/snow-medium.png");
+            -webkit-animation-duration: 15s;
+            animation-duration: 10s;
+        }
+
+        .snow.foreground.layered {
+            -webkit-animation-delay: 7.5s;
+            animation-delay: 7.5s;
+        }
+
+        .snow.middleground {
+            background-image: url(https://itexpress.vn/API/files/img/snow-medium.png);
+            -webkit-animation-duration: 20s;
+            animation-duration: 15s;
+        }
+
+        .snow.middleground.layered {
+            -webkit-animation-delay: 10s;
+            animation-delay: 10s;
+        }
+
+        .snow.background {
+            background-image: url(https://itexpress.vn/API/files/img/snow-medium.png);
+            -webkit-animation-duration: 25s;
+            animation-duration: 20s;
+        }
+
+        .snow.background.layered {
+            -webkit-animation-delay: 12.5s;
+            animation-delay: 12.5s;
+        }
+
+        @-webkit-keyframes snow {
+            0% {
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(5%, 100%, 0);
+                transform: translate3d(5%, 100%, 0);
+            }
+        }
+
+        @keyframes snow {
+            0% {
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(5%, 100%, 0);
+                transform: translate3d(5%, 100%, 0);
+            }
+        }
+    </style>
+    <div class='snow-container'>
+        <div class='snow foreground'></div>
+        <div class='snow foreground layered'></div>
+        <div class='snow middleground'></div>
+        <div class='snow middleground layered'></div>
+        <div class='snow background'></div>
+        <div class='snow background layered'></div>
+    </div>
+    <!-- End Code Snow -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    var t = 20;
+    const audio = new Audio();
+    audio.src = "s.mp3";
+    $(document).ready(function () {
+        a();
+        $("#input").click(function () {
+            
+            if ($("#input").attr("class") == "on") {
+                $("#input").attr("class", "off");
+                $(".air").attr("src", "b.png");
+                $(".snow-container").css("display","block");
+                $("#w12").css("display","block");
+                audio.play();
+            }
+            else {
+                $("#input").attr("class", "on");
+                $(".air").attr("src", "a.png");
+                $(".snow-container").css("display","none");
+                $("#w12").css("display","none");
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        });
+        $("#r1").click(function () {
+            if (t >= 29){
+                $("#e3").css("display","block");
+                
+                $("#e3").delay(3000).slideUp(200, function () {
+                $("#e3").css("display", "none");
+            });
+        }
+            if ($("#input").attr("class") == "off"){
+                t++;
+                a();
+            }
+           
+        });
+        
+        $("#r2").click(function () {
+            if (t <= 6){
+                $("#e3").css("display","block");
+                $("#e3").text("M tính chết rét à :)");
+                $("#e3").delay(3000).slideUp(200, function () {
+                $("#e3").css("display", "none");
+            });
+            }
+            if ($("#input").attr("class") == "off"){
+                t--;
+                a();
+            }
+            
+        });
+    });
+    function a(){
+        html = t+"&ordm;C";
+        $("#w12").html(html);
+    }
+</script>
 
 </html>
